@@ -28,7 +28,7 @@ Order.prototype.calculateCost = function () {
   }
   this.cost += this.toppings.length * 2;
 }
-Order.calculateCost.getBalanceDue= function(){
+Order.calculateCost.balanceDue= function() {
   return this.size + this.cost + this.toppings + this.toppings.length;
 };
 
@@ -40,6 +40,10 @@ $(document).ready(function(){
   });
   var size = $("input:radio[name=size]:checked").val();
   pizza.size = size;
+  var toppings = [];
+  $("input:checkbox[name=toppings]:checked").each(function() {
+toppings.push($(this).val());
+});
 
   console.log(size);
 
@@ -62,4 +66,3 @@ $(document).ready(function(){
   //     console.log($(pizza).val());
   // });
     });
-  });
