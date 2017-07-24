@@ -1,16 +1,15 @@
 
 //business logic
 function Order(pizza){
-
 }
 
 //Pizza object constructor
-  function Order(size,toppings,cost) {
+function Order(size,toppings,cost) {
   this.size = size;
   this.toppings = toppings;
   this.cost = 0;
-
 }
+
 //Pizza pricing set with conditions.
 Order.prototype.calculateCost = function () {
   //return this.size + this.cost;
@@ -24,11 +23,11 @@ Order.prototype.calculateCost = function () {
     this.cost += 18;
 
   }else if (this.size === "jumbo"){
-  this.cost += 19;
+    this.cost += 19;
   }
   this.cost += this.toppings.length * 2;
 }
-Order.calculateCost.balanceDue= function() {
+Order.calculateCost.newOrder = function() {
   return this.size + this.cost + this.toppings + this.toppings.length;
 };
 
@@ -41,28 +40,19 @@ $(document).ready(function(){
   var size = $("input:radio[name=size]:checked").val();
   pizza.size = size;
   var toppings = [];
+  console.log(size);
   $("input:checkbox[name=toppings]:checked").each(function() {
-toppings.push($(this).val());
+    toppings.push($(this).val());
+
+
+
+
+  });
 });
 
-  console.log(size);
 
-  //("Your Pizza Total is:"+ pizza.cost);
-  //console.log("hi");
-  //$("#cost").click(function() {
-
-
-    // if (size === "small") {
-    //   $("#small").show();
-    //   console.log("hi");
-  //   }
-  //   else if (size === "medium") {
-  //     $("#medium").show();
-  //     console.log("hello");
-  //   }
-  //  $("input:checkbox[name=toppings]:checked").each(function() {
-  //     var toppings = $(this).val();
-  //     pizza.toppings.push(toppings);
-  //     console.log($(pizza).val());
-  // });
-    });
+//  $("input:checkbox[name=toppings]:checked").each(function() {
+//     var toppings = $(this).val();
+//     pizza.toppings.push(toppings);
+//     console.log($(pizza).val());
+// });
