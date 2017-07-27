@@ -1,12 +1,8 @@
 
-//business logic
-function Order(pizza){
-}
-
 //Pizza object constructor
-function Order(size,toppings,cost) {
-  this.size = size;
-  this.toppings = toppings;
+function Order() {
+  this.size = "";
+  this.toppings = [];
   this.cost = 0;
 }
 
@@ -27,26 +23,20 @@ Order.prototype.calculateCost = function () {
   }
   this.cost += this.toppings.length * 2;
 }
-Order.calculateCost.newOrder = function() {
-  return this.size + this.cost + this.toppings + this.toppings.length;
-};
 
 //Interface logic
 $(document).ready(function(){
 
-  $("#cost").submit(function(event){
-    event.preventDefault();
-  });
-  var size = $("input:radio[name=size]:checked").val();
-  pizza.size = size;
-  var toppings = [];
-  console.log(size);
-  $("input:checkbox[name=toppings]:checked").each(function() {
-    toppings.push($(this).val());
-
-
-
-
+  $("#cost").click(function(){
+    var size = $("input:radio[name=size]:checked").val();
+    var pizza = new Order();
+    pizza.size = size;
+    $("input:checkbox[name=toppings]:checked").each(function() {
+      pizza.toppings.push($(this).val());
+    });
+    pizza.calculateCost();
+    console.log(pizza);
+    $("#balance").text("$" + pizza.cost);
   });
 });
 
